@@ -1,3 +1,33 @@
+## 🚀 Cara Instalasi
+
+1. **Clone repository**:
+   ```bash
+   git clone https://github.com/ghinamawarniputri/fundunity.git
+   ```
+2. **Masuk ke dalam file yang sudah di clone**
+   ```bash
+   - composer install
+   - cp .env.example .env
+   - php artisan key:generate
+   - php artisan migrate
+   ```
+3. **Running project**
+    ```bash
+    php artisan serve
+    ```
+---
+
+## ✅ UPLOAD GITHUB
+1. **push github**
+    ```bash
+    [pastikan udah berada di folder fundunity]
+    git add .
+    git commit -m "deskripsi"
+    git pull origin master
+    git push -u origin master
+    ```
+---
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
