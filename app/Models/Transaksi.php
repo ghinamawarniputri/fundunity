@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Transaksi extends Model
 {
     use HasFactory;
 
-    protected $table = 'users';
-    protected $primaryKey = 'id';
+    protected $table = 'transaksi';
+    protected $primaryKey = 'ID';
     public $timestamps = false;
 
     protected $fillable = [
-        'email',
-        'password'
+        'tipe_konten',
+        'konten'
     ];
 }
