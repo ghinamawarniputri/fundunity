@@ -63,7 +63,7 @@
 
         <!-- Carousel Start -->
         <div class="header-carousel owl-carousel overflow-hidden bg-dark">
-            <!-- <div class="header-carousel-item hero-section">
+            <div class="header-carousel-item hero-section">
                 <div class="hero-bg-half-1"></div>
                 <div class="carousel-caption">
                     <div class="container">
@@ -83,18 +83,21 @@
                         </div>
                     </div>
                 </div>
-            </div> -->
-            <div class="header-carousel-item hero-section" style="background: url('img/hero6.jpg') center center/cover no-repeat; min-height: 500px;">
+            </div>
+            <div class="header-carousel-item hero-section">
+                <div class="hero-bg-half-2"></div>
                 <div class="carousel-caption">
                     <div class="container">
                         <div class="row g-4 align-items-center">
                             <div class="col-lg-7 animated fadeInLeft">
                                 <div class="text-sm-center text-md-start">
-                                    <h1 class="display-2 text-white mb-4">Together, Creating Change with YukMariProject</h1>
-                                    <p class="mb-5 fs-5">Join us in making a meaningful impact for those in need and building a better future.
+                                    <h4 class="text-primary text-uppercase fw-bold mb-4">Wellcome to our fitness Center</h4>
+                                    <h1 class="display-2 text-white mb-4">Stay healthy by exercising at the best gym center</h1>
+                                    <p class="mb-5 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy... 
                                     </p>
                                     <div class="d-flex justify-content-center justify-content-md-start flex-shrink-0 mb-4">
-                                        <a class="btn py-3 px-4 px-md-5 ms-2" href="#" style="background-color: #646cff; color: white;"><span>Lets Get Moving</span></a>
+                                        <a class="btn btn-dark py-3 px-4 px-md-5 me-2" href="#"><i class="fas fa-play-circle me-2"></i> <span>Watch Video</span></a>
+                                        <a class="btn btn-primary py-3 px-4 px-md-5 ms-2" href="#"><span>Learn More</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -104,66 +107,6 @@
             </div>
         </div>
         <!-- Carousel End -->
-
-        <!-- Donate Now Section Start -->
-        <div class="container my-5">
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-8">
-                    <a href="#" class="btn btn-donate-now w-100 py-3 fs-4 fw-bold text-white text-center">Donate Now</a>
-                </div>
-            </div>
-        </div>
-        <!-- Donate Now Section End -->
-
-        <!-- Explore  Start -->
-        <div class="container-fluid explore py-5 wow zoomIn" data-wow-delay="0.2s">
-            <div class="container py-5">
-                <div class="row align-items-center g-5">
-                    <!-- Kiri: Judul, deskripsi, tombol -->
-                    <div class="col-lg-6">
-                        <h1 class="display-1 text-white mb-0"> Explore Our Gallery</h1>
-                        <p class="mt-3 mb-4 text-white" style="font-size:1.2rem;">Discover our inspiring moments and impactful stories</p>
-                        <a class="btn btn-primary py-3 px-4 px-md-5 me-2" data-bs-toggle="modal" data-bs-target="#videoModal">
-                            <i class="fas fa-play-circle me-2"></i> <span>Watch Video</span>
-                        </a>
-                    </div>
-                    <!-- Kanan: Impact Stories Card -->
-                    <div class="col-lg-6">
-                        <div class="impact-card p-4 p-md-5">
-                            <h2 class="fw-bold text-white mb-4">Our Impact Stories</h2>
-                            <p class="text-white mb-3" style="font-size:1.1rem;">
-                                Discover a curated selection of inspiring images and videos that showcase the power of change, innovation, and community support. Each piece in this gallery tells a story of resilience, hope, and the impact of collective efforts in improving lives.
-                            </p>
-                            <p class="text-white mb-4" style="font-size:1.1rem;">
-                                Through these visuals, we invite you to explore the transformative journeys of individuals and communities as they overcome challenges and inspire others to take action.
-                            </p>
-                            <div class="text-center">
-                                <a href="#" class="btn btn-light btn-lg fw-bold px-5" style="border-radius: 2em; color: #0066cc;">View Gallery</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Explore  End -->
-
-        <!-- Video Modal Start -->
-        <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div class="modal-content" style="background: #f8fbff; border-radius: 20px;">
-                    <div class="modal-body p-4">
-                        <video id="exploreVideo" controls style="width:100%; border-radius: 12px; box-shadow: 0 2px 16px rgba(0,0,0,0.08);">
-                            <source src="img/video1.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                        <div class="text-center mt-3">
-                            <a href="#" class="text-primary" style="font-weight:500;">View more videos &rarr;</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Video Modal End -->
 
         <!-- About Start -->
         <div class="container-fluid about pt-5">
@@ -627,7 +570,14 @@
         </div>
         <!-- Blog End -->
 
-        
+        <!-- Explore Fitness Start -->
+        <div class="container-fluid explore py-5 wow zoomIn" data-wow-delay="0.2s">
+            <div class="container py-5 text-center">
+                <h1 class="display-1 text-white mb-0"> Explore Fitness Center</h1>
+                <a class="btn btn-primary py-3 px-4 px-md-5 me-2" href="https://www.youtube.com/embed/DWRcNpR6Kdc"><i class="fas fa-play-circle me-2"></i> <span>Watch Video</span></a>
+            </div>
+        </div>
+        <!-- Explore Fitness End -->
 
 
         <!-- Team Start -->

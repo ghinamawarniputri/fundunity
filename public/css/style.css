@@ -1,4 +1,3 @@
-
 /*** Spinner Start ***/
 #spinner {
     opacity: 0;
@@ -139,6 +138,16 @@
 .btn.btn-dark:hover {
     color: var(--bs-white);
     background: var(--bs-primary);
+}
+
+.btn-donate-now {
+    background: linear-gradient(90deg, #646cff 0%, #646cff 100%);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px 0 rgba(33, 118, 255, 0.15);
+    transition: background 0.3s;
+}
+.btn-donate-now:hover {
+    background: linear-gradient(90deg, #1864d6 0%, #4895ef 100%);
 }
 
 /*** Navbar Start ***/
@@ -1063,7 +1072,7 @@
 .explore {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(rgba(12, 24, 68, 0.7), rgba(12, 24, 68, 0.7)), url(../img/services-img.jpg);
+    background: linear-gradient(rgba(12, 24, 68, 0.7), rgba(12, 24, 68, 0.7)), url(../img/hero3.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1359,6 +1368,23 @@
     background: var(--bs-dark);
 }
 /*** copyright end ***/
+
+.impact-card {
+    background: #0066cc;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px 0 rgba(0,102,204,0.10);
+}
+.impact-card .btn-light {
+    background: #fff;
+    color: #0066cc;
+    border: none;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s;
+}
+.impact-card .btn-light:hover {
+    background: #e6f0fa;
+    color: #004080;
+}
 
 
 
