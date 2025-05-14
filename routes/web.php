@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 Route::get('/', function () {
     return view('index');
@@ -38,3 +41,21 @@ Route::get('/feature', function () {
     return view('feature');
 })->name('features');
 
+//teslogin diubah jadi file baru nanti
+Route::get('/login', function () {
+    return view('teslogin');    
+})->name('login');
+
+Route::post('/login', function (Request $request) {
+    $credentials = $request->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required'],
+    ]);
+
+    if (Auth::attempt($credentials)) {
+        $request->session()->regenerate();
+        return redirect()->intended('/');
+    }
+
+    return back()->with('error', 'Email atau password salah');
+})->name('login.process');

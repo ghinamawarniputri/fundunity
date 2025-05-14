@@ -32,7 +32,7 @@
                                     <div class="d-flex align-items-center small">
                                         @guest
                                             <a
-                                             href="{{ url('/') }}" 
+                                             href="{{ route('login') }}" 
                                              class="login-btn text-body me-3 pe-3">
                                                 <span>Login</span>
                                             </a>
