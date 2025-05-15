@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\MidtransController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -40,6 +41,11 @@ Route::get('/404', function () {
 Route::get('/feature', function () {
     return view('feature');
 })->name('features');
+
+//tesmidtrans
+Route::get('/checkout', [MidtransController::class, 'index'])->name('midtrans');
+Route::post('/midtrans/token', [MidtransController::class, 'token']);
+Route::post('/midtrans/callback', [MidtransController::class, 'callback']);
 
 //teslogin diubah jadi file baru nanti
 Route::get('/login', function () {
