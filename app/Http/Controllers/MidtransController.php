@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Midtrans\Config;
 use Midtrans\Snap;
+use Illuminate\Support\Facades\Validator;
 
 class MidtransController extends Controller 
 {
@@ -20,6 +21,10 @@ class MidtransController extends Controller
         'email' => 'required|email',
         'amount' => 'required|numeric|min:1000',
         'keterangan' => 'nullable|string',
+        'g-recaptcha-response' => 'required|captcha',
+    ], [
+    'g-recaptcha-response.required' => 'Silakan lengkapi captcha.',
+    'g-recaptcha-response.captcha' => 'Captcha tidak valid atau sudah kedaluwarsa.',
     ]);
 
     \Midtrans\Config::$serverKey = env('MIDTRANS_SERVER_KEY');

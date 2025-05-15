@@ -46,6 +46,14 @@
                             <textarea class="form-control" id="keterangan" name="keterangan" rows="3"></textarea>
                         </div>
 
+                        {!! NoCaptcha::renderJs() !!}
+                        <div class="d-flex justify-content-center">
+                            <div>
+                                {!! NoCaptcha::display() !!}
+                            </div>
+                        </div>
+                        <div id="captcha-error" class="text-danger mt-1 text-center"></div>
+
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary btn-lg mb-2">
                                 <i class="fas fa-donate me-2"></i>Donasi Sekarang
@@ -96,8 +104,27 @@
                 });
             },
             error: function (xhr) {
-                alert('Terjadi kesalahan validasi atau server.');
-                console.log(xhr.responseText);
+                let response = xhr.responseJSON;
+                $('#captcha-error').text(''); // Reset error
+
+                if (response?.errors) {
+                    // Tampilkan pesan error CAPTCHA
+                    if (response.errors['g-recaptcha-response']) {
+                        $('#captcha-error').text(response.errors['g-recaptcha-response'][0]);
+                        if (typeof grecaptcha !== 'undefined') {
+                            grecaptcha.reset(); // Reset CAPTCHA jika validasi gagal
+                        }
+                    }
+
+                    // Tambahkan validasi lain jika mau, contoh:
+                    // if (response.errors.name) {
+                    //     alert(response.errors.name[0]);
+                    // }
+
+                } else {
+                    alert('Terjadi kesalahan validasi atau server.');
+                    console.log(xhr.responseText);
+                }
             }
         });
     });
