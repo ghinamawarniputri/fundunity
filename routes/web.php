@@ -65,3 +65,7 @@ Route::post('/login', function (Request $request) {
 
     return back()->with('error', 'Email atau password salah');
 })->name('login.process');
+Route::post('/logout', function () {
+    Auth::logout();
+    return response()->json(['message' => 'Logged out']);
+})->name('logout');

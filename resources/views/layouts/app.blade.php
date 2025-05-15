@@ -57,5 +57,28 @@
     <script src="js/main.js"></script>
     @stack('scripts')
     @yield('scrip')
+
+        <script>
+        const logoutUrl = "{{ route('logout') }}";
+        const csrfToken = "{{ csrf_token() }}";
+
+        window.addEventListener('keydown', function(e) {
+            if ((e.key === 'F5') || (e.ctrlKey && e.key.toLowerCase() === 'r')) {
+                sessionStorage.setItem('isReloading', 'true');
+            }
+        });
+
+        window.addEventListener('beforeunload', function() {
+            if (!sessionStorage.getItem('isReloading')) {
+                navigator.sendBeacon(logoutUrl, new URLSearchParams({
+                    _token: csrfToken
+                }));
+            }
+        });
+
+        window.addEventListener('load', function() {
+            sessionStorage.removeItem('isReloading');
+        });
+    </script>
 </body>
 </html> 

@@ -40,8 +40,16 @@
                                         @else
                                             <div class="dropdown">
                                                 <button class="btn btn-link dropdown-toggle text-body" type="button" id="userDropdown" data-bs-toggle="dropdown">
-                                                    {{ Auth::user()->name }}
+                                                    {{ Auth::user()->email }}
                                                 </button>
+                                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                                    <li>
+                                                        <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                                                            @csrf
+                                                            <button type="submit" class="dropdown-item">Logout</button>
+                                                        </form>
+                                                    </li>
+                                                </ul>
                                             </div>
                                         @endguest
                                     </div>
