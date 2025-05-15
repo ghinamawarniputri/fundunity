@@ -32,7 +32,7 @@
                                     <div class="d-flex align-items-center small">
                                         @guest
                                             <a
-                                             href="{{ url('/') }}" 
+                                             href="{{ route('login') }}" 
                                              class="login-btn text-body me-3 pe-3">
                                                 <span>Login</span>
                                             </a>
@@ -40,8 +40,16 @@
                                         @else
                                             <div class="dropdown">
                                                 <button class="btn btn-link dropdown-toggle text-body" type="button" id="userDropdown" data-bs-toggle="dropdown">
-                                                    {{ Auth::user()->name }}
+                                                    {{ Auth::user()->email }}
                                                 </button>
+                                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                                    <li>
+                                                        <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                                                            @csrf
+                                                            <button type="submit" class="dropdown-item">Logout</button>
+                                                        </form>
+                                                    </li>
+                                                </ul>
                                             </div>
                                         @endguest
                                     </div>
@@ -94,7 +102,7 @@
                                             <a href="{{ route('team') }}" class="dropdown-item {{ request()->routeIs('team') ? 'active' : '' }}">Donation In Nature </a>
                                         </div>
                                     </div>   
-                                    <a href="{{ url('/donate') }}" class="btn ms-lg-3" style="border-radius: 30px; padding: 8px 28px; font-size: 1rem; font-weight: bold; background:rgb(94, 151, 238); color: #fff; border: none;">
+                                    <a href="{{ route('midtrans') }}" class="btn ms-lg-3" style="border-radius: 30px; padding: 8px 28px; font-size: 1rem; font-weight: bold; background:rgb(94, 151, 238); color: #fff; border: none;">
                                         Donate Now
                                     </a>
                                 </div>

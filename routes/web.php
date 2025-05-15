@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use App\Http\Controllers\MidtransController;
+use Illuminate\Support\Facades\Auth;
+
 
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminController;
@@ -46,3 +50,34 @@ Route::get('/404', function () {
 Route::get('/feature', function () {
     return view('feature');
 })->name('features');
+<<<<<<< HEAD
+=======
+
+//tesmidtrans
+Route::get('/checkout', [MidtransController::class, 'index'])->name('midtrans');
+Route::post('/midtrans/token', [MidtransController::class, 'token']);
+Route::post('/midtrans/callback', [MidtransController::class, 'callback']);
+
+//teslogin diubah jadi file baru nanti
+Route::get('/login', function () {
+    return view('teslogin');    
+})->name('login');
+
+Route::post('/login', function (Request $request) {
+    $credentials = $request->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required'],
+    ]);
+
+    if (Auth::attempt($credentials)) {
+        $request->session()->regenerate();
+        return redirect()->intended('/');
+    }
+
+    return back()->with('error', 'Email atau password salah');
+})->name('login.process');
+Route::post('/logout', function () {
+    Auth::logout();
+    return response()->json(['message' => 'Logged out']);
+})->name('logout');
+>>>>>>> f2ffa658e44d517f51e644a498d30e6a67849775
