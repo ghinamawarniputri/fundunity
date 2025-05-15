@@ -94,7 +94,7 @@
                                             <a href="{{ route('team') }}" class="dropdown-item {{ request()->routeIs('team') ? 'active' : '' }}">Donation In Nature </a>
                                         </div>
                                     </div>   
-                                    <a href="{{ url('/donate') }}" class="btn ms-lg-3" style="border-radius: 30px; padding: 8px 28px; font-size: 1rem; font-weight: bold; background:rgb(94, 151, 238); color: #fff; border: none;">
+                                    <a href="#" class="btn ms-lg-3" style="border-radius: 30px; padding: 8px 28px; font-size: 1rem; font-weight: bold; background:rgb(94, 151, 238); color: #fff; border: none;">
                                         Donate Now
                                     </a>
                                 </div>
