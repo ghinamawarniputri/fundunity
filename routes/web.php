@@ -6,6 +6,15 @@ use App\Http\Controllers\MidtransController;
 use Illuminate\Support\Facades\Auth;
 
 
+use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\AdminController;
+
+Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
+Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.dashboard');
+
+
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+
 Route::get('/', function () {
     return view('index');
 })->name('home');
@@ -41,6 +50,8 @@ Route::get('/404', function () {
 Route::get('/feature', function () {
     return view('feature');
 })->name('features');
+<<<<<<< HEAD
+=======
 
 //tesmidtrans
 Route::get('/checkout', [MidtransController::class, 'index'])->name('midtrans');
@@ -69,3 +80,4 @@ Route::post('/logout', function () {
     Auth::logout();
     return response()->json(['message' => 'Logged out']);
 })->name('logout');
+>>>>>>> f2ffa658e44d517f51e644a498d30e6a67849775
