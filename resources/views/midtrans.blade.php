@@ -43,7 +43,7 @@
 
                         <div class="mb-3">
                             <label for="keterangan" class="form-label">Keterangan</label>
-                            <textarea class="form-control" id="keterangan" name="keterangan" rows="3"></textarea>
+                            <textarea class="form-control" id="keterangan" name="keterangan" rows="3" required></textarea>
                         </div>
 
                         <div class="d-grid">
@@ -69,6 +69,12 @@
         e.preventDefault();
         let form = $(this);
 
+        // Simpan data input form agar bisa dikirim ulang setelah transaksi berhasil
+        let nama = form.find('input[name="name"]').val();
+        let email = form.find('input[name="email"]').val();
+        let nominal = form.find('input[name="amount"]').val();
+        let keterangan = form.find('[name="keterangan"]').val();
+
         $.ajax({
             url: '/midtrans/token',
             method: 'POST',
@@ -80,8 +86,30 @@
                 snap.pay(data.token, {
                     onSuccess: function(result) {
                         alert('Pembayaran berhasil!');
-                        console.log(result);
-                    },
+                        
+                        // Kirim data donasi ke database
+                        $.ajax({
+                        url: '/transaksimasuk',
+                        method: 'POST',
+                        data: {
+                            nama: nama,
+                            email: email,
+                            nominal: nominal,
+                            keterangan: keterangan
+                        },
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(res) {
+                            console.log('Transaksi berhasil disimpan:', res);
+                            window.location.href = '/'; // Redirect ke index
+                        },
+                        error: function(xhr) {
+                        console.error('Gagal simpan ke database:', xhr.responseText);
+                        alert('Pembayaran berhasil tapi gagal menyimpan data.\n' + xhr.responseText);
+                        }
+                    });
+                },
                     onPending: function(result) {
                         alert('Menunggu pembayaran.');
                         console.log(result);

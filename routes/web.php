@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\MidtransController;
+use App\Http\Controllers\TransaksiMasukController;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -42,10 +43,13 @@ Route::get('/feature', function () {
     return view('feature');
 })->name('features');
 
-//tesmidtrans
+//midtrans
 Route::get('/checkout', [MidtransController::class, 'index'])->name('midtrans');
 Route::post('/midtrans/token', [MidtransController::class, 'token']);
 Route::post('/midtrans/callback', [MidtransController::class, 'callback']);
+
+//midtrans database landing page
+Route::post('/transaksimasuk', [App\Http\Controllers\TransaksiMasukController::class, 'store']);
 
 //teslogin diubah jadi file baru nanti
 Route::get('/login', function () {

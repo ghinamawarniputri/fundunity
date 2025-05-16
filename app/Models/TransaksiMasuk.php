@@ -9,7 +9,7 @@ class TransaksiMasuk extends Model
 {
     use HasFactory;
 
-    protected $table = 'transaksimasuk';
+    protected $table = 'transaksi_masuk';
     protected $primaryKey = 'ID';
     public $timestamps = false;
 
@@ -17,6 +17,7 @@ class TransaksiMasuk extends Model
         'nama',
         'email',
         'nominal',
-        'keterangan'
+        'keterangan',
+        'status'
     ];
 }

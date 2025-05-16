@@ -9,8 +9,12 @@ class TransaksiMasukController extends Controller
 {
     public function store(Request $request)
     {
-        $transaksimasuk = TransaksiMasuk::create($request->all());
-        return response()->json($transaksimasuk, 201);
+    $data = $request->all();
+    $data['status'] = 'Selesai'; // Tambahkan nilai default
+
+    $transaksimasuk = TransaksiMasuk::create($data);
+
+    return response()->json($transaksimasuk, 201);
     }
 
     public function update(Request $request, $id)

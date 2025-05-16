@@ -5,50 +5,63 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Midtrans\Config;
 use Midtrans\Snap;
+use App\Models\TransaksiMasuk;
 
 class MidtransController extends Controller 
 {
     public function index()
     {
-    return view('midtrans'); // pastikan file view checkout.blade.php ada di resources/views
+        return view('midtrans'); // pastikan file view-nya ada
     }
 
     public function token(Request $request)
-{
-    $request->validate([
-        'name' => 'required|string',
-        'email' => 'required|email',
-        'amount' => 'required|numeric|min:1000',
-        'keterangan' => 'nullable|string',
-    ]);
+    {
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'amount' => 'required|numeric|min:1000',
+            'keterangan' => 'required|string',
+        ]);
 
-    \Midtrans\Config::$serverKey = env('MIDTRANS_SERVER_KEY');
-    \Midtrans\Config::$isProduction = false;
-    \Midtrans\Config::$isSanitized = true;
-    \Midtrans\Config::$is3ds = true;
+        // Konfigurasi Midtrans
+        Config::$serverKey = env('MIDTRANS_SERVER_KEY');
+        Config::$isProduction = false;
+        Config::$isSanitized = true;
+        Config::$is3ds = true;
 
-    $orderId = 'DONATION-' . uniqid();
+        $orderId = 'DONATION-' . uniqid();
 
-    $params = [
-        'transaction_details' => [
-            'order_id' => $orderId,
-            'gross_amount' => (int) $request->amount,
-        ],
-        'customer_details' => [
-            'first_name' => $request->name,
+        // Simpan data ke database terlebih dahulu
+        TransaksiMasuk::create([
+            'nama' => $request->name,
             'email' => $request->email,
-        ],
-        'item_details' => [
-            [
-                'id' => 'donation',
-                'price' => (int) $request->amount,
-                'quantity' => 1,
-                'name' => 'Donasi - ' . ($request->keterangan ?? 'Tanpa Keterangan')
-            ]
-        ],
-    ];
+            'nominal' => $request->amount,
+            'keterangan' => $request->keterangan,
+            'status' => 'Selesai' // langsung diset
+        ]);
 
-    $snapToken = \Midtrans\Snap::getSnapToken($params);
-    return response()->json(['token' => $snapToken]);
+        // Buat token pembayaran
+        $params = [
+            'transaction_details' => [
+                'order_id' => $orderId,
+                'gross_amount' => (int) $request->amount,
+            ],
+            'customer_details' => [
+                'first_name' => $request->name,
+                'email' => $request->email,
+            ],
+            'item_details' => [
+                [
+                    'id' => 'donation',
+                    'price' => (int) $request->amount,
+                    'quantity' => 1,
+                    'name' => 'Donasi - ' . ($request->keterangan ?? 'Tanpa Keterangan')
+                ]
+            ],
+        ];
+
+        $snapToken = Snap::getSnapToken($params);
+
+        return response()->json(['token' => $snapToken]);
     }
 }

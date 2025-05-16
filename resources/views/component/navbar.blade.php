@@ -59,7 +59,7 @@
                     <div class="nav-bar px-0 py-lg-0" style="height: 80px;">
                         <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-start">
                             <a href="{{ route('home') }}" class="navbar-brand-2">
-                                <h1 class="text-primary mb-0"><i class="fas fa-hand-rock me-2"></i> Fitness</h1>
+                                <h1 class="text-primary mb-0">FundUnity</h1>
                             </a> 
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                                 <span class="fa fa-bars"></span>
