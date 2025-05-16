@@ -50,8 +50,6 @@ Route::get('/404', function () {
 Route::get('/feature', function () {
     return view('feature');
 })->name('features');
-<<<<<<< HEAD
-=======
 
 //tesmidtrans
 Route::get('/checkout', [MidtransController::class, 'index'])->name('midtrans');
@@ -80,4 +78,3 @@ Route::post('/logout', function () {
     Auth::logout();
     return response()->json(['message' => 'Logged out']);
 })->name('logout');
->>>>>>> f2ffa658e44d517f51e644a498d30e6a67849775
