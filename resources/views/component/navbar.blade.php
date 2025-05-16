@@ -67,11 +67,11 @@
                     <div class="nav-bar px-0 py-lg-0" style="height: 80px;">
                         <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-start">
                             <a href="{{ route('home') }}" class="navbar-brand-2">
-                                <h1 class="mb-0" style="color: rgb(94, 151, 238) !important;"><i class="fas fa-hand-rock me-2"></i> FundUnity</h1>
+                                <h1 class="mb-0" style="color: #646cff"> Fundunity</h1>
                             </a> 
-                                <button class="navbar-toggler" type="button" style="background-color: rgb(94, 151, 238)" color="#fff" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                                    <span class="fa fa-bars"></span>
-                                </button>
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" style="background-color: #646cff">
+                                <span class="fa fa-bars"></span>
+                            </button>
                             <div class="collapse navbar-collapse" id="navbarCollapse">
                                 <div class="navbar-nav mx-0 mx-lg-auto justify-content-start">
                                     <div class="nav-item dropdown">
