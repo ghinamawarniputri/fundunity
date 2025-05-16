@@ -44,7 +44,7 @@
 
     <!-- Back to Top -->
     <div class="back-to-top">
-        <a href="#" class="btn"><i class="fa fa-arrow-up"></i></a>  
+        <a href="#" class="btn" style="background-color: rgb(94, 151, 238)";><i class="fa fa-arrow-up"></i></a>  
     </div> 
 
     <!-- JavaScript Libraries -->

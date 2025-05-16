@@ -352,7 +352,7 @@
         padding: 8px 15px;
         border: none;
         background: var(--bs-primary);
-        color: var(--bs-dark);
+        color: var(--bs-white);
         transform: skew(18deg);
     }
 
