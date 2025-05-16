@@ -40,8 +40,16 @@
                                         @else
                                             <div class="dropdown">
                                                 <button class="btn btn-link dropdown-toggle text-body" type="button" id="userDropdown" data-bs-toggle="dropdown">
-                                                    {{ Auth::user()->name }}
+                                                    {{ Auth::user()->email }}
                                                 </button>
+                                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                                    <li>
+                                                        <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                                                            @csrf
+                                                            <button type="submit" class="dropdown-item">Logout</button>
+                                                        </form>
+                                                    </li>
+                                                </ul>
                                             </div>
                                         @endguest
                                     </div>
@@ -59,9 +67,9 @@
                     <div class="nav-bar px-0 py-lg-0" style="height: 80px;">
                         <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-start">
                             <a href="{{ route('home') }}" class="navbar-brand-2">
-                                <h1 class="text-primary mb-0">FundUnity</h1>
+                                <h1 class="text-primary mb-0"><i class="fas fa-hand-rock me-2"></i> Fitness</h1>
                             </a> 
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" style="background-color: #646cff">
                                 <span class="fa fa-bars"></span>
                             </button>
                             <div class="collapse navbar-collapse" id="navbarCollapse">

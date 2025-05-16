@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Midtrans\Config;
 use Midtrans\Snap;
-use App\Models\TransaksiMasuk;
 
 class MidtransController extends Controller 
 {
@@ -15,13 +14,13 @@ class MidtransController extends Controller
     }
 
     public function token(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email',
-            'amount' => 'required|numeric|min:1000',
-            'keterangan' => 'required|string',
-        ]);
+{
+    $request->validate([
+        'name' => 'required|string',
+        'email' => 'required|email',
+        'amount' => 'required|numeric|min:1000',
+        'keterangan' => 'nullable|string',
+    ]);
 
         // Konfigurasi Midtrans
         Config::$serverKey = env('MIDTRANS_SERVER_KEY');

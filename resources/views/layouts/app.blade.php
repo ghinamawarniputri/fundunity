@@ -44,7 +44,7 @@
 
     <!-- Back to Top -->
     <div class="back-to-top">
-        <a href="#" class="btn"><i class="fa fa-arrow-up"></i></a>  
+        <a href="#" class="btn" style="background-color: rgb(94, 151, 238)";><i class="fa fa-arrow-up"></i></a>  
     </div> 
 
     <!-- JavaScript Libraries -->
@@ -57,5 +57,28 @@
     <script src="js/main.js"></script>
     @stack('scripts')
     @yield('scrip')
+
+        <script>
+        const logoutUrl = "{{ route('logout') }}";
+        const csrfToken = "{{ csrf_token() }}";
+
+        window.addEventListener('keydown', function(e) {
+            if ((e.key === 'F5') || (e.ctrlKey && e.key.toLowerCase() === 'r')) {
+                sessionStorage.setItem('isReloading', 'true');
+            }
+        });
+
+        window.addEventListener('beforeunload', function() {
+            if (!sessionStorage.getItem('isReloading')) {
+                navigator.sendBeacon(logoutUrl, new URLSearchParams({
+                    _token: csrfToken
+                }));
+            }
+        });
+
+        window.addEventListener('load', function() {
+            sessionStorage.removeItem('isReloading');
+        });
+    </script>
 </body>
 </html> 

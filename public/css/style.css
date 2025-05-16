@@ -352,7 +352,7 @@
         padding: 8px 15px;
         border: none;
         background: var(--bs-primary);
-        color: var(--bs-dark);
+        color: var(--bs-white);
         transform: skew(18deg);
     }
 
@@ -1086,31 +1086,65 @@
 
 .team .team-item {
     position: relative;
-}
-.team .team-item .team-img {
-    position: relative;
-    overflow: hidden;
-    transform: matrix(1, -0.1, 0, 1, 0, 0);
-    transition: 0.5s;
+    background: rgba(0, 102, 204, 0.08);
+    border-radius: 18px;
+    min-height: 320px;
+    max-width: 260px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    box-shadow: 0 4px 24px 0 rgba(0,102,204,0.08);
+    transition: box-shadow 0.3s, transform 0.3s, background 0.3s;
 }
 
-.team .team-item .team-img img {
-    transition: 0.5s;
+.team .team-item:hover {
+    transform: translateY(-16px);
+    box-shadow: 0 16px 48px 0 rgba(0,102,204,0.22);
+    background: rgba(0, 102, 204, 0.16);
+}
+
+.team .team-item .team-img,
+.team .team-item .team-content {
+    transition: none;
+}
+
+.team .team-item:hover .team-img,
+.team .team-item:hover .team-content {
+    /* Tidak ada efek hover tambahan */
+    transform: none;
+    border: none;
+}
+
+.team .team-img {
+    width: 140px;
+    height: 140px;
+    margin: 32px auto 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.7);
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.team .team-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.team .team-content {
+    background: transparent;
+    border: none;
+    text-align: center;
+    padding: 20px 0 32px 0;
+    min-height: 80px;
 }
 
 .team .team-item:hover .team-img img {
     transform: scale(1.1);
-}
-
-.team .team-item .team-img::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 0;
-    bottom: 0;
-    left: 0;
-    transition: 0.5s;
-    z-index: 1;
 }
 
 .team .team-item:hover .team-img::after {
@@ -1118,32 +1152,21 @@
     background: rgba(255, 245, 225, .5);
 }
 
-.team .team-item .team-img .team-icon {
+.team .team-item .team-icon {
     position: absolute;
     left: 50%;
     bottom: 20px;
-    transform: translateX(-50%);
+    transform: translateX(-20%);
     display: flex;
     z-index: 2;
 }
 
-.team .team-item .team-img .team-icon a {
+.team .team-item .team-icon a {
     transition: 0.5s;
 }
 
-.team .team-item:hover .team-img .team-icon a  {
+.team .team-item:hover .team-icon a  {
     margin: 0 7px;
-}
-
-.team .team-item .team-content {
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-    padding: 25px;
-    border: 1px solid var(--bs-primary);
-    border-top: none;
-    transform: matrix(1, -0.1, 0, 1, 0, 0);
-    transition: 0.5s;
 }
 
 .team .team-item .team-content::after {
@@ -1163,17 +1186,49 @@
     border: none;
 }
 
-.team .team-item:hover .team-content::after {
+/* .team .team-item:hover .team-content::after {
     height: 100%;
     background: var(--bs-dark);
+} */
+
+.team .team-item .team-content h4,
+.team .team-item .team-content p {
+    transition: none !important;
+    color: inherit !important;
 }
 
-.team .team-item .team-content h4 {
+.team .team-item:hover .team-content h4,
+.team .team-item:hover .team-content p {
+    color: inherit !important;
+}
+
+.team-carousel .owl-nav .owl-prev,
+.team-carousel .owl-nav .owl-next {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 50%;
+    transform: translateY(-50%) skew(18deg);
+    background: var(--bs-primary);
+    color: var(--bs-white);
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: 0.5s;
 }
 
-.team .team-item:hover .team-content h4 {
-    color: var(--bs-white);
+.team-carousel .owl-nav .owl-prev {
+    left: -35px;
+}
+.team-carousel .owl-nav .owl-next {
+    right: -35px;
+}
+
+.team-carousel .owl-nav .owl-prev:hover,
+.team-carousel .owl-nav .owl-next:hover {
+    background: var(--bs-white);
+    color: var(--bs-primary);
 }
 /*** Team End ***/
 
