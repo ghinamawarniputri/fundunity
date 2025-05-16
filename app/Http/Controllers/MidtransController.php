@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\TransaksiMasuk;
 use Midtrans\Config;
 use Midtrans\Snap;
 
