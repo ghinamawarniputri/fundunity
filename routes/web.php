@@ -18,48 +18,6 @@ Route::view('/testimonial', 'testimonial')->name('testimonials');
 Route::view('/feature', 'feature')->name('features');
 Route::view('/404', '404');
 
-
-Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-Route::get('/admin/aboutus', [AdminController::class, 'aboutus'])->name('admin.aboutus');
-Route::get('/admin/transaksi', [AdminController::class, 'transaksi'])->name('admin.transaksi');
-
-Route::get('/', function () {
-    return view('index');
-})->name('home');
-
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
-
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
-
-Route::get('/course', function () {
-    return view('course');
-})->name('courses');
-
-Route::get('/blog', function () {
-    return view('blog');
-})->name('blog');
-
-Route::get('/team', function () {
-    return view('team');
-})->name('team');
-
-Route::get('/testimonial', function () {
-    return view('testimonial');
-})->name('testimonials');
-
-Route::get('/404', function () {
-    return view('404');
-});
-
-Route::get('/feature', function () {
-    return view('feature');
-})->name('features');
-
-//tesmidtrans
 // Midtrans
 Route::get('/checkout', [MidtransController::class, 'index'])->name('midtrans');
 Route::post('/midtrans/token', [MidtransController::class, 'token']);
@@ -74,6 +32,11 @@ Route::get('/admin.dashboard', [AdminAuthController::class, 'dashboard'])->name(
 // Hanya bisa diakses saat sudah login
 Route::middleware('auth')->group(function () {
     Route::get('/admin/admin_dashboard', [AdminAuthController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/aboutus', [AdminController::class, 'aboutus'])->name('admin.aboutus');
+    Route::get('/admin/transaksi', [TransaksiMasukController::class, 'index'])->name('admin.transaksi');
+    Route::put('/admin/transaksi/{id}', [TransaksiMasukController::class, 'update'])->name('admin.transaksi.update');
+    Route::delete('/admin/transaksi/{id}', [TransaksiMasukController::class, 'destroy'])->name('admin.transaksi.destroy');
     Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
     Route::post('/admin.logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 });
+

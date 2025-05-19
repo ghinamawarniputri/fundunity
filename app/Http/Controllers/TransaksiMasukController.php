@@ -10,7 +10,7 @@ class TransaksiMasukController extends Controller
     public function store(Request $request)
     {
     $data = $request->all();
-    $data['status'] = 'Selesai'; // Tambahkan nilai default
+    $data['status'] = 'Selesai';
 
     $transaksimasuk = TransaksiMasuk::create($data);
 
@@ -19,15 +19,30 @@ class TransaksiMasukController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nama' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'nominal' => 'required|numeric',
+            'keterangan' => 'required|string',
+        ]);
+
         $transaksimasuk = TransaksiMasuk::findOrFail($id);
-        $transaksimasuk->update($request->all());
-        return response()->json($transaksimasuk, 200);
+        $transaksimasuk->update($request->only('nama', 'email', 'nominal', 'keterangan'));
+
+        return redirect()->route('admin.transaksi')->with('success', 'Data berhasil diupdate');
     }
+
 
     public function destroy($id)
     {
         $transaksimasuk = TransaksiMasuk::findOrFail($id);
         $transaksimasuk->delete();
         return response()->json(null, 204);
+    }
+
+    public function index()
+    {
+        $dataKonten = TransaksiMasuk::all();
+        return view('admin.admin_transaksi', compact('dataKonten'));
     }
 }

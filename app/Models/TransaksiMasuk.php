@@ -10,7 +10,7 @@ class TransaksiMasuk extends Model
     use HasFactory;
 
     protected $table = 'transaksi_masuk';
-    protected $primaryKey = 'ID';
+    protected $primaryKey = 'id';
     public $timestamps = false;
 
     protected $fillable = [

@@ -31,8 +31,4 @@ class AdminController extends Controller
     {
         return view('admin.admin_aboutus');
     }
-        public function transaksi()
-    {
-        return view('admin.admin_transaksi');
-    }
 }
