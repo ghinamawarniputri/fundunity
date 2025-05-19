@@ -27,4 +27,12 @@ class AdminController extends Controller
     {
         return view('admin.admin_dashboard');
     }
+    public function aboutus()
+    {
+        return view('admin.admin_aboutus');
+    }
+        public function transaksi()
+    {
+        return view('admin.admin_transaksi');
+    }
 }

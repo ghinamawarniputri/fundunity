@@ -14,6 +14,8 @@ Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.
 
 
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+Route::get('/admin/aboutus', [AdminController::class, 'aboutus'])->name('admin.aboutus');
+Route::get('/admin/transaksi', [AdminController::class, 'transaksi'])->name('admin.transaksi');
 
 Route::get('/', function () {
     return view('index');
