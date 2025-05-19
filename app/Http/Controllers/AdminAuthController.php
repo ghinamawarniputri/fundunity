@@ -9,30 +9,35 @@ class AdminAuthController extends Controller
 {
     public function showLoginForm()
     {
-        return view('admin.admin_login'); // Sesuaikan dengan nama blade Anda
+        return view('admin.admin_login'); // pastikan blade ini ada
     }
 
     public function login(Request $request)
     {
-        // Validasi input
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-            'g-recaptcha-response' => 'required|captcha'
-        ]);
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+        'g-recaptcha-response' => 'required|captcha'
+    ]);
 
-        // Coba login
-        if (Auth::guard('admin')->attempt($request->only('email', 'password'))) {
-            // Jika berhasil, redirect ke dashboard
-            return redirect()->route('admin.dashboard');
-        }
+    if (Auth::attempt($request->only('email', 'password'))) {
+        $request->session()->regenerate();
+        return redirect()->route('admin.dashboard');
+    }
 
-        // Jika gagal
-        return back()->with('error', 'Invalid credentials');
+    return back()->with('error', 'Email atau password salah');
     }
 
     public function dashboard()
     {
-        return view('admin.admin_dashboard'); // Sesuaikan dengan blade dashboard Anda
+        return view('admin.admin_dashboard');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('admin.login');
     }
 }

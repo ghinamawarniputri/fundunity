@@ -75,7 +75,12 @@
         <a href="#">💳 Data Donasi</a>
         <a href="#">👤 Data Pengguna</a>
         <a href="#">⚙️ Pengaturan</a>
-        <a href="#">🚪 Logout</a>
+        <form method="POST" action="{{ route('admin.logout') }}">
+            @csrf
+            <button type="submit" style="background: none; border: none; padding: 0; margin: 0; color: black; cursor: pointer;">
+                🚪 Logout
+            </button>
+        </form>
     </div>
 
     <!-- Main Content -->
