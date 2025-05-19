@@ -119,22 +119,22 @@
             </div>
             @endif
 
-            <form method="POST" action="{{ route('admin.dashboard') }}" class="form-box">
+            <form method="POST" action="{{ route('admin.login.process') }}" class="form-box">
                 @csrf
                 <img src="{{ asset('img/LOGOcms.jpg') }}" alt="LOGOcms" style="width: 200px; height: auto; display: block; margin: 0 auto;">
                 <h2>Please enter your details</h2>
-
+                
                 <input type="email" name="email" placeholder="Your Account" required>
                 <input type="password" name="password" placeholder="Your Password" required>
-
+                
                 <div class="captcha">
                     {!! NoCaptcha::display() !!}
                 </div>
-
+                
                 <a href="#" class="forgot">Forgot Password?</a>
-
                 <button type="submit">Login</button>
             </form>
+
         </div>
     </div>
 
