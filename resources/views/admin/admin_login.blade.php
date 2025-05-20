@@ -131,6 +131,12 @@
                     {!! NoCaptcha::display() !!}
                 </div>
                 
+                @if ($errors->has('g-recaptcha-response'))
+                    <div style="color: red; font-size: 14px; margin-top: 0.5rem;">
+                        {{ $errors->first('g-recaptcha-response') }}
+                    </div>
+                @endif
+                
                 <a href="#" class="forgot">Forgot Password?</a>
                 <button type="submit">Login</button>
             </form>
