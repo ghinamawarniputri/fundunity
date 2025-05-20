@@ -28,9 +28,9 @@
                 <div class="footer-item">
                     <h4 class="text-white mb-4">Quick Links</h4>
                     <a href="{{ route('home') }}"> Who Are We</a>
-                    <a href="{{ route('about') }}"> What We Do</a>
-                    <a href="{{ route('courses') }}"> Moving Together</a>
-                    <a href="{{ route('features') }}"> Donate Now</a>
+                    <a href="{{ route('home') }}"> What We Do</a>
+                    <a href="{{ route('volunteers') }}"> Moving Together</a>
+                    <a href="{{ route('midtrans') }}"> Donate Now</a>
                 </div>
             </div>
             <div class="col-md-6 col-lg-6 col-xl-3">

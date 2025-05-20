@@ -1347,7 +1347,7 @@
 /*** Footer Start ***/
 .footer {
     overflow: hidden;
-    background: linear-gradient(rgba(12, 24, 68, 0.9), rgba(12, 24, 68, 0.98)), url(../img/services-img.jpg);
+    background: linear-gradient(rgba(12, 24, 68, 0.9), rgba(12, 24, 68, 0.98));
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
