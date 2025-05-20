@@ -36,7 +36,6 @@
                                              class="login-btn text-body me-3 pe-3">
                                                 <span>Login</span>
                                             </a>
-                                            <a href="{{ url('/') }}" class="text-body me-3">Register</a>
                                         @else
                                             <div class="dropdown">
                                                 <button class="btn btn-link dropdown-toggle text-body" type="button" id="userDropdown" data-bs-toggle="dropdown">
@@ -79,8 +78,8 @@
                                             Who Are We
                                         </a>
                                         <div class="dropdown-menu">
-                                            <a href="{{ route('features') }}" class="dropdown-item {{ request()->routeIs('features') ? 'active' : '' }}">About YMP</a>
-                                            <a href="{{ route('team') }}" class="dropdown-item {{ request()->routeIs('team') ? 'active' : '' }}">Contact</a>
+                                            <a href="{{ route('about') }}" class="dropdown-item {{ request()->routeIs('about') ? 'active' : '' }}">About YMP</a>
+                                            <a href="{{ route('contact') }}" class="dropdown-item {{ request()->routeIs('contact') ? 'active' : '' }}">Contact</a>
                                             <a href="{{ route('home') }}" class="dropdown-item {{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
                                         </div>
                                     </div>

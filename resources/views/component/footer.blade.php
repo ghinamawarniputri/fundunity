@@ -67,7 +67,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-6 col-xl-3">
+            <!-- <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="footer-item">
                     <h4 class="text-white mb-4">Recent Work</h4>
                     <div class="row g-2">
@@ -80,7 +80,7 @@
                         @endfor
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

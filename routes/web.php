@@ -16,7 +16,7 @@ Route::view('/blog', 'blog')->name('blog');
 Route::view('/team', 'team')->name('team');
 Route::view('/testimonial', 'testimonial')->name('testimonials');
 Route::view('/feature', 'feature')->name('features');
-Route::view('/404', '404');
+Route::view('/404', '404'); 
 
 // Midtrans
 Route::get('/checkout', [MidtransController::class, 'index'])->name('midtrans');

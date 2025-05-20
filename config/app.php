@@ -126,5 +126,6 @@ return [
     'address' => env('APP_ADDRESS', 'Komplek Bandung Indah Raya, Blok C13/No.17, Kelurahan Mekarjaya, Kecamatan Rancasari, Kota Bandung, Jawa Barat 40286'),
     'email' => env('APP_EMAIL', 'Email yukmari2211@gmail.com'),
     'business_hours' => env('APP_BUSINESS_HOURS', 'Mon - Sat: 8.00 am-7.00 pm'),
+    'phone' => env('APP_PHONE', '0821-1923-1293'),
     'logo' => env('APP_LOGO', 'img/logoCMS.jpg'),
 ];
