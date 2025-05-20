@@ -8,8 +8,22 @@
    ```bash
    - composer install
    - cp .env.example .env
+   - ubah database di .env menjadi 
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=fundunity
+    DB_USERNAME=root
+    DB_PASSWORD=
+   - (buat database fundunity di phpmyadmin)
    - php artisan key:generate
    - php artisan migrate
+   ```
+   ```bash
+   Jika table user tidak ke migrate, jalankan syntax berikut:
+
+   - php artisan migrate:fresh
+
    ```
 3. **Running project**
     ```bash
