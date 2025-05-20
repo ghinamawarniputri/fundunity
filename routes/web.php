@@ -14,9 +14,10 @@ Route::view('/contact', 'contact')->name('contact');
 Route::view('/course', 'course')->name('courses');
 Route::view('/blog', 'blog')->name('blog');
 Route::view('/team', 'team')->name('team');
-Route::view('/testimonial', 'testimonial')->name('testimonials');
+Route::view('/volunteers', 'volunteers')->name('volunteers');
 Route::view('/feature', 'feature')->name('features');
 Route::view('/404', '404'); 
+Route::view('/donate', 'donate')->name('donate');  
 
 // Midtrans
 Route::get('/checkout', [MidtransController::class, 'index'])->name('midtrans');

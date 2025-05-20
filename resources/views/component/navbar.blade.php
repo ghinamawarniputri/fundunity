@@ -97,8 +97,8 @@
                                             Moving Together
                                         </a>
                                         <div class="dropdown-menu">
-                                            <a href="{{ route('features') }}" class="dropdown-item {{ request()->routeIs('features') ? 'active' : '' }}">Volunteers</a>
-                                            <a href="{{ route('team') }}" class="dropdown-item {{ request()->routeIs('team') ? 'active' : '' }}">Donation In Nature </a>
+                                            <a href="{{ route('volunteers') }}" class="dropdown-item {{ request()->routeIs('volunteers') ? 'active' : '' }}">Volunteers</a>
+                                            <a href="{{ route('donate') }}" class="dropdown-item {{ request()->routeIs('donate') ? 'active' : '' }}">Donation In Nature </a>
                                         </div>
                                     </div>   
                                     <a href="{{ route('midtrans') }}" class="btn ms-lg-3" style="border-radius: 30px; padding: 8px 28px; font-size: 1rem; font-weight: bold; background:rgb(94, 151, 238); color: #fff; border: none;">
