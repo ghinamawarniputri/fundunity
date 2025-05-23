@@ -92,14 +92,8 @@
                                     </div>
                                     <div class="col-lg-12 col-xl-6">
                                         <div class="form-floating form-section-col">
-                                            <input type="text" class="form-control border-0" id="project" placeholder="Project">
-                                            <label for="project">Your Project</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-floating form-section-col">
                                             <input type="text" class="form-control border-0" id="subject" placeholder="Subject">
-                                            <label for="subject">Subject</label>
+                                            <label for="subject">Your Subject</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
