@@ -18,7 +18,8 @@ Route::view('/volunteers', 'volunteers')->name('volunteers');
 Route::view('/feature', 'feature')->name('features');
 Route::view('/404', '404'); 
 Route::view('/donate', 'donate')->name('donate');  
-
+Route::view('/program', 'program')->name('program');
+Route::view('/campaign', 'campaign')->name('campaign');
 // Midtrans
 Route::get('/checkout', [MidtransController::class, 'index'])->name('midtrans');
 Route::post('/midtrans/token', [MidtransController::class, 'token']);

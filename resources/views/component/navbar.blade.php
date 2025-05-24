@@ -88,8 +88,8 @@
                                             What We Do
                                         </a>
                                         <div class="dropdown-menu">
-                                            <a href="{{ route('features') }}" class="dropdown-item {{ request()->routeIs('features') ? 'active' : '' }}">Program</a>
-                                            <a href="{{ route('team') }}" class="dropdown-item {{ request()->routeIs('team') ? 'active' : '' }}">Campaign</a>
+                                            <a href="{{ route('program') }}" class="dropdown-item {{ request()->routeIs('program') ? 'active' : '' }}">Program</a>
+                                            <a href="{{ route('campaign') }}" class="dropdown-item {{ request()->routeIs('campaign') ? 'active' : '' }}">Campaign</a>
                                         </div>
                                     </div>
                                     <div class="nav-item dropdown">
