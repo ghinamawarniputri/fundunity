@@ -108,7 +108,8 @@
         </div>
         <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">🏠 Dashboard</a>
         <a href="{{ route('admin.aboutus') }}" class="{{ request()->routeIs('admin.aboutus') ? 'active' : '' }}">👤 About Us</a>
-        <a href="{{ route('admin.transaksi') }}" class="{{ request()->routeIs('admin.transaksi') ? 'active' : '' }}">💳 Transaksi</a>
+        <a href="{{ route('admin.transaksi') }}" class="{{ request()->routeIs('admin.transaksi') ? 'active' : '' }}">💳 Donasi</a>
+        {{-- <a href="{{ route('') }}" class="{{ request()->routeIs('') ? 'active' : '' }}">👥 Volunteer</a> --}}
         {{-- <a href="{{ route('admin.pengaturan.index') }}" class="{{ request()->routeIs('admin.pengaturan.*') ? 'active' : '' }}">⚙️ Pengaturan</a> --}}
         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">🚪 Logout</a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

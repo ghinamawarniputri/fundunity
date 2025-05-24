@@ -2,26 +2,29 @@
 
 @section('content')
 <div class="container">
-    <h2 class="mt-4">Transaksi Masuk</h2>
+    <div class="d-flex align-items-center justify-content-between mt-4 mb-3">
+        <h2><i class="bi bi-wallet2 me-2"></i>Transaksi Masuk</h2>
+    </div>
 
     @if(session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
     @endif
 
-    <div class="card mt-3">
+    <div class="card shadow-sm">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead class="table-light">
+                <table class="table table-bordered table-hover align-middle">
+                    <thead class="table-light text-center">
                         <tr>
                             <th>Nama</th>
                             <th>Email</th>
                             <th>Nominal</th>
                             <th>Keterangan</th>
-                            <th>Aksi</th>
+                            <th>Status</th>
+                            <th width="140">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,24 +33,31 @@
                                 <tr>
                                     <td>{{ $konten->nama }}</td>
                                     <td>{{ $konten->email }}</td>
-                                    <td>{{ $konten->nominal }}</td>
+                                    <td>Rp {{ number_format($konten->nominal, 0, ',', '.') }}</td>
                                     <td>{{ $konten->keterangan }}</td>
-                                    <td>
-                                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editModal{{ $konten->id }}">
-                                            Edit
+                                    <td class="text-center">
+                                        <span class="badge bg-{{ $konten->status == 'Selesai' ? 'success' : 'warning' }}">
+                                            {{ $konten->status }}
+                                        </span>
+                                    </td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editModal{{ $konten->id }}">
+                                            <i class="bi bi-pencil-square"></i> Edit
                                         </button>
 
                                         <form action="{{ route('admin.transaksi.destroy', $konten->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                            <button type="submit" class="btn btn-sm btn-danger">
+                                                <i class="bi bi-trash"></i> Hapus
+                                            </button>
                                         </form>
                                     </td>
                                 </tr>
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="5" class="text-center text-muted">Tidak ada data transaksi.</td>
+                                <td colspan="6" class="text-center text-muted">Tidak ada data transaksi.</td>
                             </tr>
                         @endif
                     </tbody>
@@ -56,7 +66,7 @@
         </div>
     </div>
 
-    {{-- Modals --}}
+    {{-- Modal Edit --}}
     @foreach($dataKonten as $konten)
         <div class="modal fade" id="editModal{{ $konten->id }}" tabindex="-1" aria-labelledby="editModalLabel{{ $konten->id }}" aria-hidden="true">
             <div class="modal-dialog">
@@ -64,26 +74,34 @@
                     @csrf
                     @method('PUT')
                     <div class="modal-content">
-                        <div class="modal-header">
+                        <div class="modal-header bg-primary text-white">
                             <h5 class="modal-title" id="editModalLabel{{ $konten->id }}">Edit Transaksi</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="nama{{ $konten->id }}" class="form-label">Nama</label>
-                                <input id="nama{{ $konten->id }}" type="text" name="nama" class="form-control" value="{{ $konten->nama }}" required>
+                                <label class="form-label">Nama</label>
+                                <input type="text" name="nama" class="form-control" value="{{ $konten->nama }}" required>
                             </div>
                             <div class="mb-3">
-                                <label for="email{{ $konten->id }}" class="form-label">Email</label>
-                                <input id="email{{ $konten->id }}" type="email" name="email" class="form-control" value="{{ $konten->email }}" required>
+                                <label class="form-label">Email</label>
+                                <input type="email" name="email" class="form-control" value="{{ $konten->email }}" required>
                             </div>
                             <div class="mb-3">
-                                <label for="nominal{{ $konten->id }}" class="form-label">Nominal</label>
-                                <input id="nominal{{ $konten->id }}" type="number" name="nominal" class="form-control" value="{{ $konten->nominal }}" required>
+                                <label class="form-label">Nominal</label>
+                                <input type="number" name="nominal" class="form-control" value="{{ $konten->nominal }}" required>
                             </div>
                             <div class="mb-3">
-                                <label for="keterangan{{ $konten->id }}" class="form-label">Keterangan</label>
-                                <textarea id="keterangan{{ $konten->id }}" name="keterangan" class="form-control" required>{{ $konten->keterangan }}</textarea>
+                                <label class="form-label">Keterangan</label>
+                                <textarea name="keterangan" class="form-control" rows="2" required>{{ $konten->keterangan }}</textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Status</label>
+                                <select name="status" class="form-select" required>
+                                    <option value="Selesai" {{ $konten->status == 'Selesai' ? 'selected' : '' }}>Selesai</option>
+                                    <option value="Pending" {{ $konten->status == 'Pending' ? 'selected' : '' }}>Pending</option>
+                                    <option value="Dibatalkan" {{ $konten->status == 'Dibatalkan' ? 'selected' : '' }}>Dibatalkan</option>
+                                </select>
                             </div>
                         </div>
                         <div class="modal-footer">

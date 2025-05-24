@@ -24,10 +24,11 @@ class TransaksiMasukController extends Controller
             'email' => 'required|email|max:255',
             'nominal' => 'required|numeric',
             'keterangan' => 'required|string',
+            'status' => 'required|string',
         ]);
 
         $transaksimasuk = TransaksiMasuk::findOrFail($id);
-        $transaksimasuk->update($request->only('nama', 'email', 'nominal', 'keterangan'));
+        $transaksimasuk->update($request->only('nama', 'email', 'nominal', 'keterangan', 'status'));
 
         return redirect()->route('admin.transaksi')->with('success', 'Data berhasil diupdate');
     }
