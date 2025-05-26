@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Bulan Mei 2025 pada 10.37
+-- Waktu pembuatan: 26 Bulan Mei 2025 pada 06.56
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -36,52 +36,25 @@ CREATE TABLE `migrations` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `programs`
+-- Struktur dari tabel `partner`
 --
 
-CREATE TABLE `programs` (
-  `ID` int(11) NOT NULL,
-  `tipe_konten` varchar(50) DEFAULT NULL,
-  `konten` varchar(255) DEFAULT NULL
+CREATE TABLE `partner` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `logo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
 --
--- Struktur dari tabel `tentang_kita`
+-- Dumping data untuk tabel `partner`
 --
 
-CREATE TABLE `tentang_kita` (
-  `ID` int(11) NOT NULL,
-  `tipe_konten` varchar(50) DEFAULT NULL,
-  `konten` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `transaksi`
---
-
-CREATE TABLE `transaksi` (
-  `ID` int(11) NOT NULL,
-  `tipe_konten` varchar(50) DEFAULT NULL,
-  `konten` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `transaksi_konfirmasi`
---
-
-CREATE TABLE `transaksi_konfirmasi` (
-  `ID` int(11) NOT NULL,
-  `nama` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `nominal` int(50) NOT NULL,
-  `keterangan` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `partner` (`id`, `nama`, `logo`) VALUES
+(1, 'BnC Cookies', ''),
+(2, 'UPI', ''),
+(3, 'UIN', ''),
+(4, 'Anugerah Cipta Arsitektur', ''),
+(5, 'Sinai Adventure', '');
 
 -- --------------------------------------------------------
 
@@ -95,30 +68,31 @@ CREATE TABLE `transaksi_masuk` (
   `email` varchar(100) NOT NULL,
   `nominal` int(50) NOT NULL,
   `keterangan` varchar(255) NOT NULL,
-  `status` varchar(255) NOT NULL
+  `status` varchar(255) NOT NULL,
+  `created_at` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `transaksi_masuk`
 --
 
-INSERT INTO `transaksi_masuk` (`ID`, `nama`, `email`, `nominal`, `keterangan`, `status`) VALUES
-(1, 'tes', 'tes@gmail.com', 500000, '', ''),
-(2, 'tes3', 'tes3@gmail.com', 1250000, '', ''),
-(3, 'tes', 'tes3@gmail.com', 1250000, 'tes', 'Selesai'),
-(4, 'tes', 'tes@gmail.com', 1254000, 'tes', 'Selesai'),
-(5, 'tes', 'tes@gmail.com', 12345000, 'tes', 'Selesai'),
-(6, 'tes', 'tes@gmail.com', 12500000, 'tes', 'Selesai'),
-(7, 'tes', 'tes@gmail.com', 12500000, 'tes', 'Selesai'),
-(8, 'tes123', 'tes@gmail.com', 12500000, 'tes', 'Selesai'),
-(9, 'apip', 'apip@gmail.com', 1250000, 'percobaan', 'Selesai'),
-(10, 'apip', 'apip@gmail.com', 12500000, 'percobaan 2', 'Selesai'),
-(11, 'apip', 'apip@gmail.com', 12500000, 'percobaan 3', 'Selesai'),
-(12, 'apip', 'apip@gmail.com', 12500000, 'percobaan 3', 'Selesai'),
-(13, 'apip ganteng', 'apip@gmail.com', 12500000, 'apip sangat gantenk', 'Selesai'),
-(14, 'apip ganteng', 'apip@gmail.com', 12500000, 'apip sangat gantenk', 'Selesai'),
-(15, 'pip', 'pipgmaing@gmail.com', 12500000, 'tes', 'Selesai'),
-(16, 'pip', 'pipgmaing@gmail.com', 12500000, 'tes', 'Selesai');
+INSERT INTO `transaksi_masuk` (`ID`, `nama`, `email`, `nominal`, `keterangan`, `status`, `created_at`) VALUES
+(1, 'tes', 'tes@gmail.com', 500000, '', '', 0),
+(2, 'tes3', 'tes3@gmail.com', 1250000, '', '', 0),
+(3, 'tes', 'tes3@gmail.com', 1250000, 'tes', 'Selesai', 0),
+(4, 'tes', 'tes@gmail.com', 1254000, 'tes', 'Selesai', 0),
+(5, 'tes', 'tes@gmail.com', 12345000, 'tes', 'Selesai', 0),
+(6, 'tes', 'tes@gmail.com', 12500000, 'tes', 'Selesai', 0),
+(7, 'tes', 'tes@gmail.com', 12500000, 'tes', 'Selesai', 0),
+(8, 'tes123', 'tes@gmail.com', 12500000, 'tes', 'Selesai', 0),
+(9, 'apip', 'apip@gmail.com', 1250000, 'percobaan', 'Selesai', 0),
+(10, 'apip', 'apip@gmail.com', 12500000, 'percobaan 2', 'Selesai', 0),
+(11, 'apip', 'apip@gmail.com', 12500000, 'percobaan 3', 'Selesai', 0),
+(12, 'apip', 'apip@gmail.com', 12500000, 'percobaan 3', 'Selesai', 0),
+(13, 'apip ganteng', 'apip@gmail.com', 12500000, 'apip sangat gantenk', 'Selesai', 0),
+(14, 'apip ganteng', 'apip@gmail.com', 12500000, 'apip sangat gantenk', 'Selesai', 0),
+(15, 'pip', 'pipgmaing@gmail.com', 12500000, 'tes', 'Selesai', 0),
+(16, 'pip', 'pipgmaing@gmail.com', 12500000, 'tes', 'Selesai', 0);
 
 -- --------------------------------------------------------
 
@@ -167,28 +141,10 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `programs`
+-- Indeks untuk tabel `partner`
 --
-ALTER TABLE `programs`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indeks untuk tabel `tentang_kita`
---
-ALTER TABLE `tentang_kita`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indeks untuk tabel `transaksi`
---
-ALTER TABLE `transaksi`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indeks untuk tabel `transaksi_konfirmasi`
---
-ALTER TABLE `transaksi_konfirmasi`
-  ADD PRIMARY KEY (`ID`);
+ALTER TABLE `partner`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `transaksi_masuk`
@@ -219,28 +175,10 @@ ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `programs`
+-- AUTO_INCREMENT untuk tabel `partner`
 --
-ALTER TABLE `programs`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `tentang_kita`
---
-ALTER TABLE `tentang_kita`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `transaksi`
---
-ALTER TABLE `transaksi`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `transaksi_konfirmasi`
---
-ALTER TABLE `transaksi_konfirmasi`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `partner`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `transaksi_masuk`

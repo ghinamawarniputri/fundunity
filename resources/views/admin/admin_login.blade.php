@@ -119,7 +119,7 @@
             </div>
             @endif
 
-            <form method="POST" action="{{ route('admin.login.process') }}" class="form-box">
+            <form method="POST" action="{{ route('login') }}" class="form-box">
                 @csrf
                 <img src="{{ asset('img/LOGOcms.jpg') }}" alt="LOGOcms" style="width: 200px; height: auto; display: block; margin: 0 auto;">
                 <h2>Please enter your details</h2>

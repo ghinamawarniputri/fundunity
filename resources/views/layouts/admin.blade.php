@@ -107,7 +107,7 @@
             <img src="{{ asset('img/LOGOcms.jpg') }}" alt="FundUnity Logo" style="max-width: 100%; height: auto;">
         </div>
         <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">🏠 Dashboard</a>
-        <a href="{{ route('admin.aboutus') }}" class="{{ request()->routeIs('admin.aboutus') ? 'active' : '' }}">👤 About Us</a>
+        <a href="{{ route('admin.partner.index') }}" class="{{ request()->routeIs('admin.partner.index') ? 'active' : '' }}">👤 Partner</a>
         <a href="{{ route('admin.transaksi') }}" class="{{ request()->routeIs('admin.transaksi') ? 'active' : '' }}">💳 Donasi</a>
         {{-- <a href="{{ route('') }}" class="{{ request()->routeIs('') ? 'active' : '' }}">👥 Volunteer</a> --}}
         {{-- <a href="{{ route('admin.pengaturan.index') }}" class="{{ request()->routeIs('admin.pengaturan.*') ? 'active' : '' }}">⚙️ Pengaturan</a> --}}

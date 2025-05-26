@@ -1,50 +1,24 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Partner;
 use Illuminate\Support\Facades\Storage;
 
-class AdminController extends Controller
+class PartnerController extends Controller
 {
-    // Login related
-    public function showLoginForm()
-    {
-        return view('admin.admin_login');
-    }
-
-    public function login(Request $request)
-    {
-        $credentials = $request->only('email', 'password');
-
-        if (Auth::attempt($credentials)) {
-            return redirect()->route('admin.admin_dashboard');
-        }
-
-        return redirect()->back()->with('error', 'Invalid credentials');
-    }
-
-    // Dashboard
-    public function dashboard()
-    {
-        return view('admin.admin_dashboard');
-    }
-
-    // Partner management
-    public function partnerIndex()
+    public function index()
     {
         $partners = Partner::all();
         return view('admin.admin_partner', compact('partners'));
     }
 
-    public function partnerCreate()
+    public function create()
     {
         return view('admin.partner.create');
     }
 
-    public function partnerStore(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'nama' => 'required|string|max:255',
@@ -64,13 +38,13 @@ class AdminController extends Controller
         return redirect()->route('admin.partner.index')->with('success', 'Partner berhasil ditambahkan.');
     }
 
-    public function partnerEdit($id)
+    public function edit($id)
     {
         $partner = Partner::findOrFail($id);
         return view('admin.partner.edit', compact('partner'));
     }
 
-    public function partnerUpdate(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $partner = Partner::findOrFail($id);
 
@@ -92,7 +66,7 @@ class AdminController extends Controller
         return redirect()->route('admin.partner.index')->with('success', 'Partner berhasil diperbarui.');
     }
 
-    public function partnerDestroy($id)
+    public function destroy($id)
     {
         $partner = Partner::findOrFail($id);
         if ($partner->logo) {
@@ -103,3 +77,4 @@ class AdminController extends Controller
         return redirect()->route('admin.partner.index')->with('success', 'Partner berhasil dihapus.');
     }
 }
+

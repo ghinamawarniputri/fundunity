@@ -70,53 +70,89 @@
                     <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.4s">
                         <div class="form-section bg-dark p-5 h-100">
                             <h1 class="display-4 text-white mb-4">Get In touch</h1>
-                            <form>
+                            <form id="contact-form">
                                 <div class="row g-4">
                                     <div class="col-lg-12 col-xl-6">
                                         <div class="form-floating form-section-col">
-                                            <input type="text" class="form-control border-0" id="name" placeholder="Your Name">
+                                            <input type="text" class="form-control border-0" id="name" name="name" placeholder="Your Name">
                                             <label for="name">Your Name</label>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12 col-xl-6">
-                                        <div class="form-floating form-section-col">
-                                            <input type="email" class="form-control border-0" id="email" placeholder="Your Email">
-                                            <label for="email">Your Email</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 col-xl-6">
-                                        <div class="form-floating form-section-col">
-                                            <input type="phone" class="form-control border-0" id="phone" placeholder="Phone">
-                                            <label for="phone">Your Phone</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 col-xl-6">
-                                        <div class="form-floating form-section-col">
-                                            <input type="text" class="form-control border-0" id="subject" placeholder="Subject">
-                                            <label for="subject">Your Subject</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-floating">
-                                            <textarea class="form-control border-0" placeholder="Leave a message here" id="message" style="height: 160px;"></textarea>
-                                            <label for="message">Message</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="#" id="flexCheck">
-                                            <label class="form-check-label" for="flexCheck">I agree with the site privacy policy</label>
-                                          </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-section-col">
-                                            <button class="btn-primary w-100 py-3 px-5">Send Message</button>
-                                        </div>
-                                    </div>
+                            <div class="col-lg-12 col-xl-6">
+                                <div class="form-floating form-section-col">
+                                    <input type="email" class="form-control border-0" id="email" name="email" placeholder="Your Email">
+                                    <label for="email">Your Email</label>
                                 </div>
-                            </form>
+                            </div>
+                            <div class="col-lg-12 col-xl-6">
+                                <div class="form-floating form-section-col">
+                                    <input type="text" class="form-control border-0" id="phone" name="phone" placeholder="Phone">
+                                    <label for="phone">Your Phone</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-xl-6">
+                                <div class="form-floating form-section-col">
+                                    <input type="text" class="form-control border-0" id="project" name="project" placeholder="Project">
+                                    <label for="project">Your Project</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating form-section-col">
+                                    <input type="text" class="form-control border-0" id="subject" name="subject" placeholder="Subject">
+                                    <label for="subject">Subject</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control border-0" placeholder="Leave a message here" id="message" name="message" style="height: 160px;"></textarea>
+                                    <label for="message">Message</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="#" id="flexCheck">
+                                    <label class="form-check-label" for="flexCheck">I agree with the site privacy policy</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-section-col">
+                                    <button type="submit" class="btn-primary w-100 py-3 px-5">Send Message</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </form>
+
+                    <!-- EmailJS Script -->
+                    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+        <script type="text/javascript">
+            // Inisialisasi EmailJS
+            (function(){
+                emailjs.init("0KNWfVfxV0FlrDHvK"); // Ganti dengan USER ID EmailJS kamu
+            })();
+
+            // Tunggu sampai DOM siap
+            document.addEventListener('DOMContentLoaded', function () {
+                const form = document.getElementById('contact-form');
+                if (form) {
+                    form.addEventListener('submit', function(event) {
+                        event.preventDefault();
+
+                        emailjs.sendForm('service_3ehw36j', 'template_5y8zq9e', this)
+                            .then(function(response) {
+                                alert("Pesan berhasil dikirim!");
+                                console.log('SUCCESS!', response.status, response.text);
+                                form.reset(); // Reset form setelah sukses
+                            }, function(error) {
+                                alert("Gagal mengirim pesan.");
+                                console.log('FAILED...', error);
+                            });
+                    });
+                }
+            });
+        </script>
+                </div>
+            </div>
                     <div class="col-12 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="h-100 overflow-hidden">
                             <iframe class="w-100" style="height: 400px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.410509536533!2d107.67248267410723!3d-6.96080606815035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c300070c60c1%3A0xddd74453cb6ef1a!2sPT.%20YUKMARI%20PROJECT%20INDONESIA!5e0!3m2!1sen!2sid!4v1747716955872!5m2!1sen!2sid" 
