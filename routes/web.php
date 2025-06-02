@@ -30,8 +30,8 @@ Route::post('/midtrans/callback', [MidtransController::class, 'callback']);
 Route::post('/transaksimasuk', [TransaksiMasukController::class, 'store']);
 
 // Auth login admin ke dashboard
-Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('login'); // Laravel butuh ini
-Route::post('/login', [AdminAuthController::class, 'login'])->name('login'); // opsional
+Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('login'); 
+Route::post('/login', [AdminAuthController::class, 'login'])->name('login'); 
 Route::get('/admin.dashboard', [AdminAuthController::class, 'dashboard'])->name('admin.dashboard');
 Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
 

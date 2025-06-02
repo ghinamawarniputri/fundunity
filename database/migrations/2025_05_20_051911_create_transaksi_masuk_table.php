@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('nama', 100);
             $table->string('email', 100);
             $table->integer('nominal');
-            $table->string('keterangan');
-            $table->string('status');
+            $table->string('keterangan')->nullable();
+            $table->string('status')->nullable();
+            $table->timestamp('created_at')->nullable();
         });
     }
 
